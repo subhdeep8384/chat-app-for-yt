@@ -24,7 +24,7 @@ const SearchInput = () => {
 
       setSelectedConversation(Conversation);
       if(selectedConversation) document.getElementById(selectedConversation).scrollIntoView({ behavior:'smooth' }); 
-      toast.success("Found " + Conversation.fullname);
+      toast("Found " + Conversation.fullname);
       setSearch("");
     } else {
       toast.error("No conversation found");
