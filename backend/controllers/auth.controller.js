@@ -6,7 +6,6 @@ import generateTokenAndSet from "../utils/generatetoken.js"
 export const signup = async (req , res ) =>{
     try {
         const {fullname , username , password , confirmPassword , gender } = req.body ;
-
         if(password !== confirmPassword ){
             return res.status(400).json({
                 message : "Passwords do not match" ,
@@ -35,7 +34,7 @@ export const signup = async (req , res ) =>{
             username ,
             password : hashedPassword ,
             gender,
-            profilepicture : gender === 'Male'? boyProfilePic : girlProfilePic,
+            profilepicture : gender === 'male'? boyProfilePic : girlProfilePic,
         })
 
         await newuser.save();
@@ -74,9 +73,6 @@ export const login = async  (req , res ) =>{
 
         generateTokenAndSet(user._id , res ) ;
         res.status(200).json({
-            message : "User logged in successfully" ,
-            error : false,
-            success : true,
             data : user 
         })
 
