@@ -17,12 +17,13 @@ export const SocketContextProvider = (({children } ) => {
     const [onlineUser , setOnlineUser ] = useState([]) 
 
     const { authUser } = useAuthContext() 
+    
 
     useEffect( () => {
         if( authUser ){
             const socket = io("http://localhost:5000", {
                 query : {
-                    userId : authUser.data._id,
+                    userId : authUser.data._id ,
                 },
             })
             setSocket(socket)

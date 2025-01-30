@@ -6,7 +6,7 @@ import generateTokenAndSet from "../utils/generatetoken.js"
 export const signup = async (req , res ) =>{
     try {
         const {fullname , username , password , confirmPassword , gender } = req.body ;
-        if(password !== confirmPassword ){
+        if(password != confirmPassword ){
             return res.status(400).json({
                 message : "Passwords do not match" ,
                 error : true ,
@@ -42,13 +42,7 @@ export const signup = async (req , res ) =>{
 
 
         res.status(201).json({
-          _id : newuser._id ,
-          fullname : newuser.fullname,
-          username : newuser.username,
-          profilepicture : newuser.profilepicture,
-          password : newuser.password ,
-          message : "User created successfully",
-          error : false,
+            data : newuser 
         })
     } catch (error) {
         console.error(error)
